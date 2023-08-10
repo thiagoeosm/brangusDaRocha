@@ -3,8 +3,13 @@
       <h1>This is a FORM</h1>
       <form>
         <label>Nome</label>
-        <input type="text" id="name-box">
+        <input type="text" v-model="nome">
+        <label>Idade</label>
+        <input type="number" v-model="idade">
       </form>
+      <button v-on:click="getResult(nome, idade)">Processar</button>
+
+      <p class="result-box">{{resultado}}</p>
     </div>
   </template>
 
@@ -12,7 +17,16 @@
   export default {
     data() {
         return {
-            nomeQueEuEscrevi: 'thiago'
+            nome: '',
+            idade: 0,
+            resultado: ''
+        }
+    },
+
+    methods: {
+        getResult(nome, idade) {
+          const phrase = `O ${nome} tem ${idade} anos.`
+          this.resultado = phrase;
         }
     }
   }
@@ -20,21 +34,25 @@
   </script>
   
   <style>
-  @media (min-width: 1024px) {
-    .about {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-    }
-  }
-
   form{
     display: flex;
     flex-direction: column;
     max-width: 200px;
   }
 
-  .name-box{
-    max-width: 10px;
+  input{
+    margin-top: 3px;
   }
+
+  button{
+    max-width: 80px;
+    margin-top: 10px;
+  }
+
+  .result-box{
+    margin-top: 30px;
+    font-weight: bold;
+    font-size: large;
+  }
+
   </style>
