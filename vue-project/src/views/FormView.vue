@@ -1,17 +1,20 @@
+<script setup>
+import TextField from '../components/fields/TextField.vue'
+import NumberField from '../components/fields/NumberField.vue'
+import Butao from '../components/utilities/Butao.vue'
+</script>
+
 <template>
     <div class="about">
       <h1>This is a FORM</h1>
       <form>
-        <label>Nome</label>
-        <input type="text" v-model="nome">
-        <label>Nome de idoso</label>
-        <input type="text" v-model="idoso">
-        <label>Idade</label>
-        <input type="number" v-model="idade">
-        <label>Quantidade de dentes de sabre</label>
-        <input type="number" v-model="sabre">
+        <TextField label="nombre" />
+        <TextField label="viejo" />
+        <NumberField label="idade" />
+        <NumberField label="dentes de velho" />
       </form>
       <button v-on:click="getResult(nome, idade, sabre, idoso)">Processar</button>
+      <Butao label="Processar2" utility=this.getResult />
 
       <p class="result-box">{{resultado}}</p>
     </div>
