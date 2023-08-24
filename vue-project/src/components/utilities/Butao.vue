@@ -1,6 +1,5 @@
 <template>
-    
-    <button v-on:click="utility">{{label}}</button>
+    <button @click="this.$emit('clicked')">{{label}}</button>
 
 </template>
 
@@ -8,9 +7,6 @@
 defineProps({
   label: {
     type: String,
-  },
-  utility: {
-    type: Function,
   }
 })
 </script>
