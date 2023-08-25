@@ -1,17 +1,16 @@
+<script setup>
+import Field from '../components/fields/Field.vue'
+import Butao from '../components/utilities/Butao.vue'
+</script>
+
 <template>
     <div class="about">
       <h1>This is a FORM</h1>
       <form>
-        <label>Nome</label>
-        <input type="text" v-model="nome">
-        <label>Nome de idoso</label>
-        <input type="text" v-model="idoso">
-        <label>Idade</label>
-        <input type="number" v-model="idade">
-        <label>Quantidade de dentes de sabre</label>
-        <input type="number" v-model="sabre">
+        <Field inputType="text" label="nombre" @written="(val) => this.nome = val.target.value"/>
+        <Field inputType="number" label="viejo" @written="(val) => this.idade = val.target.value"/>
       </form>
-      <button v-on:click="getResult(nome, idade, sabre, idoso)">Processar</button>
+      <Butao label="Processar" @clicked="getResult(this.nome, this.idade)" />
 
       <p class="result-box">{{resultado}}</p>
     </div>
@@ -28,8 +27,8 @@
     },
 
     methods: {
-        getResult(nome, idade, sabre, idoso) {
-          const phrase = `O ${nome}, tambem conhecido como ${idoso} tem ${idade} anos e ${sabre} dentes de sabre.`
+        getResult(nome, idade) {
+          const phrase = `O ${nome}, tambem conhecido como Shnalzer, tem ${idade} anos e dentes de sabre.`
           this.resultado = phrase;
         }
     }
