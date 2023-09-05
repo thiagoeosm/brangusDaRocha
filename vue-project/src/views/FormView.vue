@@ -9,8 +9,17 @@ import Butao from '../components/utilities/Butao.vue'
       <form>
         <Field inputType="text" label="nombre" @written="(val) => this.nome = val.target.value"/>
         <Field inputType="number" label="viejo" @written="(val) => this.idade = val.target.value"/>
+
+        <div>Escolha uma:</div>
+
+        <input type="radio" id="Batata" value="Batata" v-model="escolha"/>
+        <label for="Batata">Batata</label>
+
+        <input type="radio" id="Estudar" value="Estudar" v-model="escolha"/>
+        <label for="Estudar">Estudar</label>
+
       </form>
-      <Butao label="Processar" @clicked="getResult(this.nome, this.idade)" />
+      <Butao label="Processar" @clicked="getResult(this.nome, this.idade, this.escolha)" />
 
       <p class="result-box">{{resultado}}</p>
     </div>
@@ -22,13 +31,14 @@ import Butao from '../components/utilities/Butao.vue'
         return {
             nome: '',
             idade: 0,
+            escolha: '',
             resultado: ''
         }
     },
 
     methods: {
-        getResult(nome, idade) {
-          const phrase = `O ${nome}, tambem conhecido como Shnalzer, tem ${idade} anos e dentes de sabre.`
+        getResult(nome, idade, escolha) {
+          const phrase = `O ${nome}, tambem conhecido como Shnalzer, tem ${idade} anos e gosta de ${escolha}.`
           this.resultado = phrase;
         }
     }
