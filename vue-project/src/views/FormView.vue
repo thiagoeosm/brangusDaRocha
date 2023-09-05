@@ -10,7 +10,7 @@ import Butao from '../components/utilities/Butao.vue'
         <Field inputType="text" label="nombre" @written="(val) => this.nome = val.target.value"/>
         <Field inputType="number" label="viejo" @written="(val) => this.idade = val.target.value"/>
 
-        <Field inputType="radio" label="escolha" @marco="(val) => this.escolha = val.target.value"/>
+        <Field inputType="radio" label="escolha" :options=this.options @marco="(val) => this.escolha = val.target.value"/>
 
       </form>
       <Butao label="Processar" @clicked="getResult(this.nome, this.idade, this.escolha)" />
@@ -26,7 +26,8 @@ import Butao from '../components/utilities/Butao.vue'
             nome: '',
             idade: 0,
             escolha: '',
-            resultado: ''
+            resultado: '',
+            options: ["batata","estudar","blablun","one piece","minha namorada fala alto"]
         }
     },
 
